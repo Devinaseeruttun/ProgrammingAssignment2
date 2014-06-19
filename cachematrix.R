@@ -27,15 +27,10 @@ message ( "# use v's get function to retrieve the matrix created")
   
 
 }  
-cacheSolve <- function(x) {
-  message("#Pass the list m to the cachesolve a second time")
-  message("# the inverse of the 2 x 2 matrix should be returned")
-  message("# also a message retrieving catched invverse indicating that")
-  message("# the inverse matrix is not been calculated this time but ")
-  message("# is being retrieved from catched value")
-  message("retrieving catched inverse")  
+cacheSolve <- function(x) {  
   I <- x$getsolve()
-  if(!is.null(I)) {
+  if(!is.null(I)) { 
+  message("retrieving catched inverse") 
     return(I)
   }
   data <- x$get()
@@ -45,6 +40,3 @@ cacheSolve <- function(x) {
   message ("#use v's set function to create a new 3 x 3 matrix")
 
 }
-
-
-    
