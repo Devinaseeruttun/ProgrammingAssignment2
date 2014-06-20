@@ -1,35 +1,32 @@
-            message ( " #calling makecachematrix() function")
-            message ( " # return value ( a list of four functions) to a variable,m")
-            message ( " #  m is now a list of four functions")
+ #  calling makecachematrix() function
+#  return value ( a list of four functions) to a variable,m
+#  m is now a list of four functions
 makeCacheMatrix <- function (x = matrix()) {
-      I <- NULL
-            message ( "# use v's set function to create a matrix") 
-            message ( "#  with nrow =n and nrow =n")
-      set <- function(y = matrix()) {
-                  x <<- y
-                  I <<- NULL
-             message ( "# use v's get function to retrieve the matrix created")
-             message ( "#  pass the created matrix v to the cacheSolve() function")  
-             message ( "#   the inverse of the matrix will be returned")
-       } 
-       get <- function() x
-       setsolve <- function(solve) I <<- solve(x)
-       getsolve <- function() I
-       result <- list(set = set, get = get ,
+  I <- NULL
+#  use v's set function to create a matrix with nrow =n and nrow =n 
+  set <- function(y = matrix()) {
+    x <<- y
+    I <<- NULL
+#  use v's get function to retrieve the matrix created and pass the created matrix v to the cacheSolve() function  
+#  the inverse of the matrix will be returned
+    } 
+  get <- function() x
+  setsolve <- function(solve) I <<- solve(x)
+  getsolve <- function() I
+  result <- list(set = set, get = get ,
                  setsolve = setsolve ,
                  getsolve = getsolve)
-       return(result)
+  return(result)
 }  
 cacheSolve <- function(x) {  
-     I <- x$getsolve()
-     if(!is.null(I)) { 
-            message( "# Retrieving inverse matrix a second time ")
-            message( "#  from the environment without performing any calculation ")
-            message( "retrieving catched inverse matrix") 
-            return(I)
-     }
-     data <- x$get()
-     I <- solve(data)
-     x$setsolve(I)
-     I
+  I <- x$getsolve()
+  if(!is.null(I)) { 
+# Retrieving inverse matrix a second time from the environment without performing any calculation
+                message( "retrieving catched inverse matrix") 
+  return(I)
+  }
+  data <- x$get()
+  I <- solve(data)
+  x$setsolve(I)
+  I
 }
